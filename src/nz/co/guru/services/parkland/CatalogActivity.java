@@ -6,6 +6,7 @@ import java.util.List;
 
 import nz.co.guru.services.parkland.model.Language;
 import nz.co.guru.services.parkland.model.ProductItem;
+import nz.co.guru.services.parkland.search.SearchActivity;
 import nz.co.guru.services.parkland.settings.SettingsActivity;
 import android.app.ActionBar;
 import android.app.Activity;
@@ -61,6 +62,8 @@ public class CatalogActivity extends Activity {
 
     private static final int adBannerAnimationDuration = 1000;
 
+    private Button searchBrandButton;
+
     /**
      * handler to hide the adBanner in 30 seconds
      */
@@ -97,7 +100,7 @@ public class CatalogActivity extends Activity {
             }
         }
 
-        catalogListAdapter = new CatalogListAdapter(this, ProductOrderManager.getCataloggroups());
+        catalogListAdapter = new CatalogListAdapter(this, ProductOrderManager.getCatalogGroups());
         catalogListView.setAdapter(catalogListAdapter);
 
         // expand each group
@@ -135,6 +138,16 @@ public class CatalogActivity extends Activity {
             @Override
             public void onClick(final View v) {
                 viewOrders();
+            }
+        });
+
+        searchBrandButton = (Button) findViewById(R.id.searchBrandButton);
+        searchBrandButton.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(final View v) {
+                final Intent intent = new Intent(getBaseContext(), SearchActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -375,22 +388,29 @@ public class CatalogActivity extends Activity {
 
     private static final int SPECIAL_OFFER_ID = 0;
 
-    private static final int ORDER_HISTORY_ITEM_ID = 1;
+    private static final int ORDER_HISTORY_ITEM_ID = SPECIAL_OFFER_ID + 1;
 
-    private static final int SETTINGS_ITEM_ID = 2;
+    private static final int SETTINGS_ITEM_ID = ORDER_HISTORY_ITEM_ID + 1;
 
-    private static final int LOG_OUT_ITEM_ID = 3;
+    private static final int LOG_OUT_ITEM_ID = SETTINGS_ITEM_ID + 1;
 
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
         super.onCreateOptionsMenu(menu);
         if (displayAdBanner) {
-            final MenuItem viewOrderItem = menu.add(0, SPECIAL_OFFER_ID, SPECIAL_OFFER_ID, "View Order");
+            final MenuItem viewOrderItem = menu.add(0, SPECIAL_OFFER_ID, SPECIAL_OFFER_ID, "Sales");
             {
                 viewOrderItem.setIcon(R.drawable.special_offer);
-                viewOrderItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+                // viewOrderItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+                viewOrderItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
             }
         }
+
+        // final MenuItem viewOrderItem = menu.add(0, SEARCH_ID, SEARCH_ID, "Search");
+        // {
+        // viewOrderItem.setIcon(R.drawable.search_small);
+        // viewOrderItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+        // }
 
         final MenuItem orderHistoryMenuItem = menu.add(0, ORDER_HISTORY_ITEM_ID, ORDER_HISTORY_ITEM_ID, "Order History");
         {
@@ -418,6 +438,10 @@ public class CatalogActivity extends Activity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 return true;
+                // case SEARCH_ID:
+                // Intent intent = new Intent(getBaseContext(), SearchActivity.class);
+                // startActivity(intent);
+                // return true;
             case SPECIAL_OFFER_ID:
                 if (hideBannerHandler != null && hideBannerRunnable != null) {
                     hideBannerHandler.removeCallbacks(hideBannerRunnable);

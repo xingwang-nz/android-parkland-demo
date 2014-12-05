@@ -8,6 +8,12 @@
     <string name="view_order_card">View Order</string>
     <string name="add_to_card">Add Order</string>
     <string name="company_name">\@Copyright Guru Services Ltd</string>
+    
+    <string-array name="spinner_items">
+       <item>Dhaka</item>
+       <item>Chittagong</item>
+</string-array>
+
 
     <style name="ButtonText">
 <!--         <item name="android:layout_width">fill_parent</item> -->

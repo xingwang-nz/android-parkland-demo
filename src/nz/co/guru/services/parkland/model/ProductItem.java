@@ -118,4 +118,24 @@ public class ProductItem implements Serializable {
         this.productBrandLogoResourceId = productBrandLogoResourceId;
     }
 
+    /**
+     * check if the inventoryId contains searchText or equals searchText, case insensitive
+     */
+    public boolean matchInventoryId(final String searchText) {
+        if (searchText == null || searchText.equals("")) {
+            return false;
+        }
+        return inventoryId.toLowerCase().contains(searchText.toLowerCase());
+    }
+
+    /**
+     * check if the description contains searchText or equals searchText, case insensitive
+     */
+    public boolean matchProductDescription(final String searchText) {
+        if (searchText == null || searchText.equals("")) {
+            return false;
+        }
+        return description.toLowerCase().contains(searchText.toLowerCase());
+    }
+
 }

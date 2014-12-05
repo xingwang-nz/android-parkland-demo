@@ -21,24 +21,42 @@
             android:clickable="true"
             android:dividerHeight="1dp" />
 
-        <Button
-            android:id="@+id/viewOrderButton"
-            style="@style/ButtonText"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_margin="3dp"
-            android:background="@drawable/button_green"
-            android:text="@string/view_order_card" >
-        </Button>
-    </LinearLayout>
+            android:orientation="horizontal" >
 
-<!--     <LinearLayout -->
-<!--         android:id="@+id/addBannerLayout" -->
-<!--         android:layout_width="fill_parent" -->
-<!--         android:layout_height="wrap_content" -->
-<!--         android:layout_alignParentTop="true" -->
-<!--         android:orientation="vertical" > -->
-<!--     </LinearLayout> -->
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp" >
+
+                <Button
+                    android:id="@+id/searchBrandButton"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="2dp"
+                    android:background="@drawable/search_small"
+                    android:minHeight="1dp"
+                    android:minWidth="1dp" />
+
+                <Button
+                    android:id="@+id/viewOrderButton"
+                    style="@style/ButtonText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="right"
+                    android:layout_margin="3dp"
+                    android:background="@drawable/button_green"
+                    android:text="@string/view_order_card" >
+                </Button>
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
 
 </FrameLayout>

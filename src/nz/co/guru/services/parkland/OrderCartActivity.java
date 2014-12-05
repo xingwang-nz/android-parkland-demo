@@ -1,7 +1,6 @@
 package nz.co.guru.services.parkland;
 
 import java.lang.reflect.Method;
-import java.util.List;
 
 import nz.co.guru.services.parkland.model.ProductItem;
 import android.app.ActionBar;
@@ -12,25 +11,21 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class OrderCartActivity extends Activity {
 
-    private OrderCartListAdapter listAdapter;
+    private ProductListListAdapter listAdapter;
 
     private Button sendOrderButton;
 
@@ -50,7 +45,7 @@ public class OrderCartActivity extends Activity {
         orderCartListView = (ListView) findViewById(R.id.orderCartListView);
 
         // productAdapter = new ProductAdapter(getApplicationContext(), ProductOrderHelper.getOrders(), getLayoutInflater(), true);
-        listAdapter = new OrderCartListAdapter(this, ProductOrderManager.getOrderCart(), getLayoutInflater());
+        listAdapter = new ProductListListAdapter(this, ProductOrderManager.getOrderCart(), getLayoutInflater());
 
         orderCartListView.setAdapter(listAdapter);
         orderCartListView.setOnItemClickListener(new OnItemClickListener() {
@@ -222,62 +217,6 @@ public class OrderCartActivity extends Activity {
 
     private void setSendOrderButtonStatus() {
         sendOrderButton.setEnabled(ProductOrderManager.hasOrders());
-    }
-
-    private class OrderCartListAdapter extends BaseAdapter {
-
-        private final Activity parentActivity;
-
-        private final List<ProductItem> orderCart;
-
-        private final LayoutInflater inflater;
-
-        public OrderCartListAdapter(final Activity parentActivity, final List<ProductItem> orderCart, final LayoutInflater inflater) {
-            this.parentActivity = parentActivity;
-            this.orderCart = orderCart;
-            this.inflater = inflater;
-        }
-
-        @Override
-        public int getCount() {
-            return orderCart == null ? 0 : orderCart.size();
-        }
-
-        @Override
-        public Object getItem(final int position) {
-            return orderCart.get(position);
-        }
-
-        @Override
-        public long getItemId(final int position) {
-            return position;
-        }
-
-        @Override
-        public View getView(final int position, View convertView, final ViewGroup parent) {
-            if (convertView == null) {
-                convertView = inflater.inflate(R.layout.list_catalog_item, null);
-            }
-
-            final ProductItem productItem = (ProductItem) getItem(position);
-
-            final TextView productDescriptionView = (TextView) convertView.findViewById(R.id.catalogItemName);
-            productDescriptionView.setText(productItem.getDescription());
-
-            final TextView catalogItemOtherInfo = (TextView) convertView.findViewById(R.id.catalogItemOtherInfo);
-            catalogItemOtherInfo.setText(productItem.getProductItemOtherInfo());
-
-            final TextView catalogItemCounts = (TextView) convertView.findViewById(R.id.catalogItemCounts);
-
-            if (productItem.getQuantity() > 0) {
-                catalogItemCounts.setText(String.valueOf(productItem.getQuantity()));
-            }
-            else {
-                catalogItemCounts.setText("");
-            }
-
-            return convertView;
-        }
     }
 
 }

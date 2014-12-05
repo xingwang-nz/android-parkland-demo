@@ -7,6 +7,7 @@ import java.util.List;
 
 import nz.co.guru.services.parkland.model.CatalogGroup;
 import nz.co.guru.services.parkland.model.ProductItem;
+import nz.co.guru.services.parkland.search.ProductFieldFilter;
 
 /**
  * Temporary class to store the hard-code catalogs.
@@ -396,7 +397,7 @@ public class ProductOrderManager {
         return PROD_ID++;
     }
 
-    public static List<CatalogGroup> getCataloggroups() {
+    public static List<CatalogGroup> getCatalogGroups() {
         return Collections.unmodifiableList(catalogGroups);
     }
 
@@ -473,5 +474,50 @@ public class ProductOrderManager {
         }
 
         return Collections.unmodifiableList(items);
+    }
+
+    private static CatalogGroup getGroupById(final int id) {
+        for (final CatalogGroup group : catalogGroups) {
+            if (group.getId() == id) {
+                return group;
+            }
+        }
+        return null;
+    }
+
+    public static List<ProductItem> searchProduct(final CatalogGroup selectedCatalogGroup, final ProductFieldFilter productFieldFilter, final String searchText) {
+        final List<CatalogGroup> searchGroups = selectedCatalogGroup == null || selectedCatalogGroup.getId() <= 0 ? catalogGroups : Collections
+                .singletonList(getGroupById(selectedCatalogGroup.getId()));
+
+        final List<ProductItem> result = new ArrayList<ProductItem>();
+
+        for (final CatalogGroup catalogGroup : searchGroups) {
+
+            for (final ProductItem productItem : catalogGroup.getProducts()) {
+                switch (productFieldFilter) {
+                    case ALL:
+                        if (productItem.matchInventoryId(searchText) || productItem.matchProductDescription(searchText)) {
+                            result.add(productItem);
+                        }
+                        break;
+                    case INVENTORY_ID:
+                        if (productItem.matchInventoryId(searchText)) {
+                            result.add(productItem);
+                        }
+                        break;
+                    case NAME:
+                        if (productItem.matchProductDescription(searchText)) {
+                            result.add(productItem);
+                        }
+                        break;
+                    default:
+
+                }
+
+            }
+
+        }
+
+        return result;
     }
 }

@@ -16,7 +16,6 @@ public class SplashScreenActivity extends Activity {
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
-
         // Sets Application to full screen by removing action bar
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         // getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -29,13 +28,9 @@ public class SplashScreenActivity extends Activity {
         final boolean displaySplash = sharedPref.getBoolean(SettingsActivity.KEY_PREF_DISPLAY_SPLASH_SCREEN, true);
 
         if (displaySplash) {
-
             new Handler().postDelayed(new Runnable() {
 
-                /*
-                 * Showing splash screen with a timer. This will be useful when you
-                 */
-
+                // Showing splash screen with a timer. This will be useful when you
                 @Override
                 public void run() {
                     // This method will be executed once the timer is over

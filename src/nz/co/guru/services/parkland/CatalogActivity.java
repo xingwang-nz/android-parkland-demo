@@ -332,7 +332,7 @@ public class CatalogActivity extends Activity {
         final StringBuilder textBuilder = new StringBuilder();
         int count = 1;
         for (final ProductItem item : specialOfferProducts) {
-            textBuilder.append(item.getDescription()).append(" ").append(item.getPrice().toString());
+            textBuilder.append(item.getDescription()).append(" $").append(item.getPrice().toString());
             if (count != specialOfferProducts.size()) {
                 textBuilder.append(", ");
                 count++;
@@ -406,12 +406,6 @@ public class CatalogActivity extends Activity {
             }
         }
 
-        // final MenuItem viewOrderItem = menu.add(0, SEARCH_ID, SEARCH_ID, "Search");
-        // {
-        // viewOrderItem.setIcon(R.drawable.search_small);
-        // viewOrderItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-        // }
-
         final MenuItem orderHistoryMenuItem = menu.add(0, ORDER_HISTORY_ITEM_ID, ORDER_HISTORY_ITEM_ID, "Order History");
         {
             orderHistoryMenuItem.setIcon(R.drawable.order_history);
@@ -438,10 +432,7 @@ public class CatalogActivity extends Activity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 return true;
-                // case SEARCH_ID:
-                // Intent intent = new Intent(getBaseContext(), SearchActivity.class);
-                // startActivity(intent);
-                // return true;
+
             case SPECIAL_OFFER_ID:
                 if (hideBannerHandler != null && hideBannerRunnable != null) {
                     hideBannerHandler.removeCallbacks(hideBannerRunnable);
@@ -459,7 +450,6 @@ public class CatalogActivity extends Activity {
                 Toast.makeText(this, "Under construction", Toast.LENGTH_LONG).show();
                 return true;
             case SETTINGS_ITEM_ID:
-                // Toast.makeText(this, "Under construction", Toast.LENGTH_LONG).show();
                 final Intent intent = new Intent(getBaseContext(), SettingsActivity.class);
                 startActivity(intent);
                 return true;

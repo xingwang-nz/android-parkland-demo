@@ -15,7 +15,7 @@
             android:name=".SplashScreenActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"
             android:icon="@drawable/parkland_logo"
-            android:label="GuruServices"
+            android:label="ParkLand"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -77,6 +77,7 @@
             android:name=".search.SearchActivity"
             android:icon="@drawable/search_small"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"
+            android:screenOrientation="portrait"
             android:label="All Brands" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />

@@ -20,6 +20,8 @@ public class ProductItem implements Serializable {
 
     private boolean isSpecial;
 
+    private int productBrandLogoResourceId;
+
     public ProductItem() {
     }
 
@@ -79,7 +81,7 @@ public class ProductItem implements Serializable {
     }
 
     public String getProductItemOtherInfo() {
-        return inventoryId + ", $" + price.toString();
+        return inventoryId + " $" + price.toString();
     }
 
     @Override
@@ -106,6 +108,14 @@ public class ProductItem implements Serializable {
             return false;
         }
         return true;
+    }
+
+    public int getProductBrandLogoResourceId() {
+        return productBrandLogoResourceId;
+    }
+
+    public void setProductBrandLogoResourceId(final int productBrandLogoResourceId) {
+        this.productBrandLogoResourceId = productBrandLogoResourceId;
     }
 
 }

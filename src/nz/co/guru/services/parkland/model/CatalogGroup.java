@@ -10,14 +10,14 @@ public class CatalogGroup {
 
     private final String name;
 
-    private final int imageRsourceId;
+    private final int imageResourceId;
 
     private final List<ProductItem> products = new ArrayList<ProductItem>();
 
-    public CatalogGroup(final int id, final String name, final int imageRsourceId) {
+    public CatalogGroup(final int id, final String name, final int imageResourceId) {
         this.id = id;
         this.name = name;
-        this.imageRsourceId = imageRsourceId;
+        this.imageResourceId = imageResourceId;
     }
 
     public int getId() {
@@ -30,14 +30,15 @@ public class CatalogGroup {
 
     public void addProduct(final ProductItem item) {
         this.products.add(item);
+        item.setProductBrandLogoResourceId(this.getImageResourceId());
     }
 
     public List<ProductItem> getProducts() {
         return Collections.unmodifiableList(products);
     }
 
-    public int getImageRsourceId() {
-        return imageRsourceId;
+    public int getImageResourceId() {
+        return imageResourceId;
     }
 
     @Override

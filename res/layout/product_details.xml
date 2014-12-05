@@ -12,6 +12,12 @@
         android:background="#ffffff"
         android:orientation="horizontal"
         android:paddingLeft="2dp" >
+        
+        <ImageView
+            android:id="@+id/productBrandImage"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true" />
 
         <TextView
             android:id="@+id/productDetailDescriptionField"

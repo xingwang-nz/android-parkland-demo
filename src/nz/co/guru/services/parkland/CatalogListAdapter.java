@@ -70,7 +70,7 @@ public class CatalogListAdapter extends BaseExpandableListAdapter {
         final CatalogGroup catalogGroup = (CatalogGroup) getGroup(groupPosition);
 
         final ImageView imageView = (ImageView) convertView.findViewById(R.id.catalogGroupImage);
-        imageView.setImageDrawable(context.getResources().getDrawable(catalogGroup.getImageRsourceId()));
+        imageView.setImageDrawable(context.getResources().getDrawable(catalogGroup.getImageResourceId()));
 
         final TextView catalogNameField = (TextView) convertView.findViewById(R.id.catalogGroupNameField);
         catalogNameField.setText(catalogGroup.getName());

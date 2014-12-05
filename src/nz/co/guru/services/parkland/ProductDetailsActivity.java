@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class ProductDetailsActivity extends Activity {
@@ -23,6 +24,9 @@ public class ProductDetailsActivity extends Activity {
 
         selectedProduct = (ProductItem) getIntent().getExtras().getSerializable(ProductOrderManager.SELECTED_PRODUCT_ITEM);
 
+        final ImageView imageView = (ImageView) findViewById(R.id.productBrandImage);
+        imageView.setImageDrawable(getApplicationContext().getResources().getDrawable(selectedProduct.getProductBrandLogoResourceId()));
+
         final TextView productDescriptionTextView = (TextView) findViewById(R.id.productDetailDescriptionField);
         productDescriptionTextView.setText(selectedProduct.getDescription());
 
@@ -30,7 +34,7 @@ public class ProductDetailsActivity extends Activity {
         productDetailCodeField.setText(String.valueOf(selectedProduct.getInventoryId()));
 
         final TextView productDetailPriceField = (TextView) findViewById(R.id.productDetailPriceField);
-        productDetailPriceField.setText(selectedProduct.getPrice().toString());
+        productDetailPriceField.setText("$" + selectedProduct.getPrice().toString());
 
         setQuantityInField(selectedProduct.getQuantity());
 
@@ -63,10 +67,10 @@ public class ProductDetailsActivity extends Activity {
     @Override
     protected Dialog onCreateDialog(final int id) {
         return new AlertDialog.Builder(this)
-        .setIcon(R.drawable.dialog_alert)
-        .setTitle("Zero quantity")
-        .setMessage(
-                "The product quantity is 0, this product won't be added to the order or will be removed from the order, click OK to continue or Cancel to change the quantity")
+                .setIcon(R.drawable.dialog_alert)
+                .setTitle("Zero quantity")
+                .setMessage(
+                        "The product quantity is 0, this product won't be added to the order or will be removed from the order, click OK to continue or Cancel to change the quantity")
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
 
                     @Override

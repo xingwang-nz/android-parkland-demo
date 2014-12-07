@@ -207,10 +207,10 @@ public class SearchActivity extends Activity implements OnEditorActionListener {
         final String[] fields = new String[filterFields.length];
 
         for (int i = 0; i < filterFields.length; i++) {
-            fields[i] = filterFields[i].toString();
+            fields[i] = filterFields[i].getDescription();
         }
 
-        builder.setSingleChoiceItems(fields, -1, new DialogInterface.OnClickListener() {
+        builder.setSingleChoiceItems(fields, productFieldFilter.ordinal(), new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(final DialogInterface dialog, final int which) {

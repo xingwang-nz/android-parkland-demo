@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@drawable/list_selector"
     android:orientation="horizontal"
     android:padding="5dip" >
@@ -10,27 +10,18 @@
         android:id="@+id/catalogGroupImage"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_alignParentLeft="true" />
-
-    <TextView
-        android:id="@+id/catalogGroupNameEmpty"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/catalogGroupImage"
-        android:text=" "
-        android:textColor="#040404"
-        android:textSize="6sp"
-        android:textStyle="bold"
-        android:typeface="sans" />
+        android:layout_alignParentLeft="true"
+        android:layout_centerInParent="true" />
 
     <TextView
         android:id="@+id/catalogGroupNameField"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/catalogGroupNameEmpty"
-        android:layout_toRightOf="@id/catalogGroupImage"
-        android:gravity="center_vertical"
-        android:paddingLeft="5dp"
+        android:layout_alignBottom="@+id/catalogGroupImage"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/catalogGroupImage"
+        android:gravity="left|center"
         android:text="catalog name"
         android:textColor="#040404"
         android:textSize="13sp"

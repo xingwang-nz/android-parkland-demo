@@ -9,30 +9,5 @@
     <string name="add_to_card">Add Order</string>
     <string name="company_name">\@Copyright Guru Services Ltd</string>
     
-    <string-array name="spinner_items">
-       <item>Dhaka</item>
-       <item>Chittagong</item>
-</string-array>
-
-
-    <style name="ButtonText">
-<!--         <item name="android:layout_width">fill_parent</item> -->
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">#ffffff</item>
-        <item name="android:gravity">center</item>
-        <item name="android:layout_margin">2dp</item>
-        <item name="android:textSize">15sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:shadowColor">#000000</item>
-        <item name="android:shadowDx">1</item>
-        <item name="android:shadowDy">1</item>
-        <item name="android:shadowRadius">2</item>
-         <item name="android:minHeight">35dip</item>
-    </style>
     
-<!--     <style name="noActionBar"> -->
-<!--         <item name="android:windowNoTitle">true</item> -->
-<!--     </style> -->
-
 </resources>

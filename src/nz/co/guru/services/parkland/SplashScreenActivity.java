@@ -9,10 +9,11 @@ import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.view.Window;
 
-public class SplashScreenActivity extends Activity {
+public class SplashScreenActivity
+        extends Activity {
 
     // Splash screen timer
-    private static int SPLASH_TIME_OUT = 3000;
+    private static int SPLASH_TIME_OUT = 4000;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -38,8 +39,7 @@ public class SplashScreenActivity extends Activity {
                     displayLoginScreen();
                 }
             }, SPLASH_TIME_OUT);
-        }
-        else {
+        } else {
             displayLoginScreen();
         }
     }

@@ -33,13 +33,23 @@
 
                 <Button
                     android:id="@+id/searchBrandButton"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="left"
                     android:layout_marginLeft="2dp"
                     android:background="@drawable/search_icon"
+                    android:minHeight="1dp"
+                    android:minWidth="1dp" />
+
+                <Button
+                    android:id="@+id/bntScanner"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/ic_barcode_scanner"
                     android:minHeight="1dp"
                     android:minWidth="1dp" />
 
